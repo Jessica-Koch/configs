@@ -40,3 +40,68 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 !+Right::Send {shift down}{End}}{shift up}
 !+Up::Send {Lctrl down}{shift down}{Home}}{shift up}{Lctrl up}
 !+Down::Send {Lctrl down}{shift down}{End}}{shift up}{Lctrl up}
+
+;------------------------------------------------------------------------------
+; Fix for -ign instead of -ing.
+; Words to exclude: (could probably do this by return without rewrite)
+; From: http://www.morewords.com/e nds-with/gn/
+;------------------------------------------------------------------------------
+
+#Hotstring B0  ; Turns off automatic backspacing for the following hotstrings.
+; Can be suffix exceptions, too, but should correct "-aling" without correcting "-align".
+
+::align::
+::antiforeign::
+::arraign::
+::assign::
+::benign::
+:?:campaign:: ; covers "countercampaign". no such words as -campaing
+::champaign::
+::codesign::
+::coign::
+::condign::
+::consign::
+::coreign::
+::cosign::
+;::countercampaign::
+::countersign::
+::deign::
+::deraign::
+::design::
+::eloign::
+::ensign::
+::feign::
+::foreign::
+::indign::
+::malign::
+::misalign::
+::outdesign::
+::overdesign::
+::preassign::
+::realign::
+::reassign::
+::redesign::
+::reign::
+::resign::
+::sign::
+::sovereign::
+::unalign::
+::unbenign::
+::verisign::
+return  ; This makes the above hotstrings do nothing so that they override the ign->ing rule below.
+
+#Hotstring B  ; Turn back on automatic backspacing for all subsequent hotstrings.
+:?:ign::ing
+
+;-------------------------------------------------------------------------------
+; Common Acronyms to Capitalise
+; Move the ones you want in effect, above the commented section (/* .. */)
+; NOTE, care should be taken when making use of any these, as some of these could clash with command line entries (e.g. "cd" in Linux to change directory)
+;-------------------------------------------------------------------------------
+; 
+
+#IfWinActive ahk_exe Teams.exe
+::usb::USB ; Universal Serial Bus
+::i::I ; I
+::teh::the ; the
+return
