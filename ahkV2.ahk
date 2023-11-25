@@ -43,14 +43,11 @@ Persistent
 !+Up::Send "{Lctrl down}{shift down}{Home}}{shift up}{Lctrl up}"
 !+Down::Send "{Lctrl down}{shift down}{End}}{shift up}{Lctrl up}"
 
+;
 ; Window Management Scripts
+;
 ; Maximum window size to be Ctrl + Win + Alt + M
 ^#!m::WinMaximize "A"
-
-; Run "notepad.exe"
-; WinWait "Untitled - Notepad"
-; WinActivate "Untitled - Notepad"
-; WinMove A_ScreenWidth/2, 0, A_ScreenWidth /2, A_ScreenHeight, "Untitled - Notepad"
 
 ; Move window to the left of the screen
 ; Ctrl + Win + Alt + Left
